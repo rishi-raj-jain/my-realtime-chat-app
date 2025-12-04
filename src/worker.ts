@@ -218,10 +218,6 @@ export function createExports(manifest: SSRManifest) {
             async fetch(request, env, ctx) {
                 // @ts-expect-error - request is not typed correctly
                 return handle(manifest, app, request, env, ctx);
-            },
-            async queue(batch, _env) {
-                let messages = JSON.stringify(batch.messages);
-                console.log(`consumed from our queue: ${messages}`);
             }
         } satisfies ExportedHandler<ENV>,
         ChatRoom,
